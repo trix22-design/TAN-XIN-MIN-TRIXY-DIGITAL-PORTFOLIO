@@ -206,6 +206,31 @@ img{
   bottom: auto !important;
 }
 
+/* HOME: spacing under intro text */
+.home__description{
+  margin-top: 12px;     /* keeps your current spacing */
+  margin-bottom: 20px;  /* adds space before Contact button */
+  line-height: 1.7;
+  max-width: 56ch;
+}
+
+/* HOME: make LinkedIn icon bigger */
+.home__social-icon i{
+  font-size: 2rem;      /* try 2.2rem if you want bigger */
+}
+
+/* HOME: add some space between button and LinkedIn icon area */
+.home__social{
+  margin-top: 18px;
+}
+.home__social-icon{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
 /*====================================================*/
 /* BUTTONS                                             */
 /*====================================================*/
@@ -259,6 +284,21 @@ img{
   margin-right: 0.35rem;
   color: var(--first-color);
 }
+.skills__icon-img{
+  width: 32px;
+  height: 32px;
+  filter: brightness(0) saturate(100%) invert(32%) sepia(91%) saturate(2116%) hue-rotate(210deg) brightness(102%) contrast(101%);
+}
+
+/* Force Python icon to use same blue */
+.skills__names i,
+.skills__names .fa-python,
+.skills__names .fab{
+  color: var(--first-color) !important;
+}
+
+
+
 .skills__names{
   display: flex;
   align-items: center;
