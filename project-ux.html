@@ -1,0 +1,398 @@
+<!-- =========================
+     project-ux.html
+     (Same layout/UX as PawPals page: navbar + full-slide carousel (auto+manual) + click image new tab + project summary cards)
+========================= -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Velvet Oasis Hotel UX Project | Trixy Tan</title>
+
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <!-- Boxicons (for navbar toggle icon) -->
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet" />
+
+  <style>
+    .project-wrapper{
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+      padding: 0 16px;
+    }
+
+    /* --- CAROUSEL (auto + manual) --- */
+    .carousel{
+      position: relative;
+      width: 100%;
+      max-width: 980px;
+      margin: 2rem auto 1rem;
+      overflow: hidden;
+      border-radius: 1rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      background: #fff;
+    }
+
+    .carousel__viewport{
+      width: 100%;
+      height: clamp(320px, 70vh, 680px);
+    }
+
+    .slides{
+      display: flex;
+      height: 100%;
+      transition: transform 450ms ease;
+      will-change: transform;
+    }
+
+    .slide{
+      flex: 0 0 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .slide a{
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .slide img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .slide::after{
+      content: "Click to view full image ↗";
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.55);
+      color: #fff;
+      font-size: 0.85rem;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: 180ms ease;
+    }
+    .carousel:hover .slide::after{ opacity: 1; transform: translateY(0); }
+
+    .carousel__btn{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 46px;
+      height: 46px;
+      border: none;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.55);
+      color: #fff;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      z-index: 3;
+    }
+    .carousel__btn:hover{ background: rgba(0,0,0,0.75); }
+    .carousel__btn:active{ transform: translateY(-50%) scale(0.98); }
+    .carousel__btn.prev{ left: 12px; }
+    .carousel__btn.next{ right: 12px; }
+
+    .carousel__dots{
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      padding: 12px 0 14px;
+      background: #fff;
+    }
+    .dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      border: none;
+      background: rgba(0,0,0,0.2);
+      cursor: pointer;
+    }
+    .dot.active{ background: rgba(0,0,0,0.7); }
+
+    .project-actions{
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 10px 0 28px;
+    }
+
+    /* Summary cards */
+    .project-summary{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+      text-align: left;
+    }
+    .project-card{
+      background: #fff;
+      border-radius: .75rem;
+      padding: 1.25rem 1.25rem;
+      box-shadow: 0px 4px 25px rgba(14, 36, 49, 0.10);
+      border: 1px solid rgba(14, 36, 49, 0.06);
+    }
+    .project-card--wide{ grid-column: span 2; }
+
+    .project-card__label{
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--first-color);
+      margin-bottom: .55rem;
+      text-align: center;
+    }
+    .project-card__value{
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--second-color);
+      line-height: 1.5;
+      text-align: center;
+    }
+    .project-card__text{
+      font-size: .95rem;
+      line-height: 1.7;
+      color: var(--second-color);
+      text-align: left;
+    }
+
+    /* Centered checklist with ticks */
+    .project-card__list{
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+    .project-card__list li{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 1.05rem;
+      line-height: 1.85;
+      margin-bottom: 0.6rem;
+      text-align: center;
+    }
+    .project-card__list li::before{
+      content: "✓";
+      color: var(--first-color);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    @media screen and (max-width: 576px){
+      .project-summary{ grid-template-columns: 1fr; }
+      .project-card--wide{ grid-column: auto; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <header class="l-header">
+    <nav class="nav bd-grid">
+      <div>
+        <a href="index.html#home" class="nav__logo">Trixy</a>
+      </div>
+
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="nav__item"><a href="index.html#home" class="nav__link">Home</a></li>
+          <li class="nav__item"><a href="index.html#about" class="nav__link">About</a></li>
+          <li class="nav__item"><a href="index.html#skills" class="nav__link">Skills</a></li>
+
+          <li class="nav__item nav__dropdown">
+            <a href="index.html#projects" class="nav__link">Projects ▾</a>
+            <ul class="nav__dropdown-menu">
+              <li><a href="index.html#project1" class="nav__dropdown-link">Eatwell</a></li>
+              <li><a href="index.html#project2" class="nav__dropdown-link">Velvet Oasis Hotel</a></li>
+              <li><a href="index.html#project3" class="nav__dropdown-link">Pawpals Website</a></li>
+            </ul>
+          </li>
+
+          <li class="nav__item"><a href="index.html#work" class="nav__link">Experience</a></li>
+          <li class="nav__item"><a href="index.html#contact" class="nav__link">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="nav__toggle" id="nav-toggle">
+        <i class="bx bx-menu"></i>
+      </div>
+    </nav>
+  </header>
+
+  <main class="l-main">
+    <section class="section">
+      <div class="project-wrapper">
+
+        <h2 class="section-title">Velvet Oasis Hotel – UX Design & Interactive Prototype</h2>
+
+        <p class="about__text" style="max-width: 860px; margin: 0 auto;">
+          This project applied UX Design principles to evaluate usability issues and design an interactive prototype
+          for a fictional hotel website, focusing on clear navigation, user flows, and error prevention.
+        </p>
+
+        <!-- CAROUSEL -->
+        <div class="carousel" id="carousel" aria-label="Velvet Oasis images carousel">
+          <button class="carousel__btn prev" type="button" aria-label="Previous image">&#10094;</button>
+
+          <div class="carousel__viewport">
+            <div class="slides" id="slides">
+              <div class="slide">
+                <a href="assets/img/suites.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open full image: Hotel landing page">
+                  <img src="assets/img/suites.jpg" alt="Hotel landing page">
+                </a>
+              </div>
+              <div class="slide">
+                <a href="assets/img/suitespage.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open full image: Rooms and facilities page">
+                  <img src="assets/img/suitespage.jpg" alt="Rooms and facilities page">
+                </a>
+              </div>
+              <div class="slide">
+                <a href="assets/img/Facilities booking .jpg" target="_blank" rel="noopener noreferrer" aria-label="Open full image: Booking and enquiry form">
+                  <img src="assets/img/Facilities booking .jpg" alt="Booking and enquiry form">
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <button class="carousel__btn next" type="button" aria-label="Next image">&#10095;</button>
+          <div class="carousel__dots" id="dots" aria-label="Carousel navigation dots"></div>
+        </div>
+
+        <!-- Buttons under carousel -->
+        <div class="project-actions">
+          <!-- Put your Figma prototype link here -->
+          <a class="button"
+   href="https://www.figma.com/proto/I9ZI6Ey58xj0fZVEqRUDHS/Hotel-Website?node-id=247-2015&starting-point-node-id=247%3A320"
+   target="_blank"
+   rel="noopener noreferrer">
+  View Figma Prototype ↗
+</a>
+
+
+          <a href="index.html#projects" class="button secondary">
+            ← Back to Portfolio
+          </a>
+        </div>
+
+        <!-- SUMMARY CARDS -->
+        <div class="project-summary">
+          <div class="project-card">
+            <div class="project-card__label">Role</div>
+            <div class="project-card__value">UX Designer</div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-card__label">Tools</div>
+            <div class="project-card__value">Figma</div>
+          </div>
+
+          <div class="project-card project-card--wide">
+            <div class="project-card__label">What I Did</div>
+            <ul class="project-card__list">
+              <li>Conducted heuristic evaluation to identify usability issues</li>
+              <li>Designed 3 interactive pages: landing, rooms, booking/enquiry</li>
+              <li>Applied UX principles: clear navigation, consistency, error prevention</li>
+              <li>Built an interactive flow for navigation and form completion</li>
+            </ul>
+          </div>
+
+          <div class="project-card project-card--wide">
+            <div class="project-card__label">Outcome</div>
+            <p class="project-card__text">
+              Strengthened understanding of user-centred design, information architecture, and interaction design
+              for service-based websites, with emphasis on usability and clarity.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Mobile nav toggle
+    const navMenu = document.getElementById("nav-menu");
+    const navToggle = document.getElementById("nav-toggle");
+    if (navToggle && navMenu) {
+      navToggle.addEventListener("click", () => navMenu.classList.toggle("show"));
+    }
+
+    // Carousel logic (auto + manual)
+    const carousel = document.getElementById("carousel");
+    const slidesEl = document.getElementById("slides");
+    const total = slidesEl.children.length;
+
+    const prevBtn = carousel.querySelector(".carousel__btn.prev");
+    const nextBtn = carousel.querySelector(".carousel__btn.next");
+    const dotsEl = document.getElementById("dots");
+
+    let index = 0;
+    const AUTOPLAY_MS = 3500;
+    let timer = null;
+
+    const dots = [];
+    for (let i = 0; i < total; i++) {
+      const b = document.createElement("button");
+      b.className = "dot" + (i === 0 ? " active" : "");
+      b.type = "button";
+      b.setAttribute("aria-label", "Go to image " + (i + 1));
+      b.addEventListener("click", () => {
+        goTo(i);
+        restartAutoplay();
+      });
+      dotsEl.appendChild(b);
+      dots.push(b);
+    }
+
+    function update() {
+      slidesEl.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle("active", i === index));
+    }
+    function goTo(i) {
+      index = (i + total) % total;
+      update();
+    }
+    function next() { goTo(index + 1); }
+    function prev() { goTo(index - 1); }
+
+    prevBtn.addEventListener("click", () => { prev(); restartAutoplay(); });
+    nextBtn.addEventListener("click", () => { next(); restartAutoplay(); });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") { prev(); restartAutoplay(); }
+      if (e.key === "ArrowRight") { next(); restartAutoplay(); }
+    });
+
+    function startAutoplay() {
+      stopAutoplay();
+      timer = setInterval(next, AUTOPLAY_MS);
+    }
+    function stopAutoplay() {
+      if (timer) clearInterval(timer);
+      timer = null;
+    }
+    function restartAutoplay() { startAutoplay(); }
+
+    carousel.addEventListener("mouseenter", stopAutoplay);
+    carousel.addEventListener("mouseleave", startAutoplay);
+    carousel.addEventListener("focusin", stopAutoplay);
+    carousel.addEventListener("focusout", startAutoplay);
+
+    update();
+    startAutoplay();
+  </script>
+</body>
+</html>

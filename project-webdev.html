@@ -1,0 +1,375 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Web Development Portfolio Project | Trixy Tan</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <style>
+    .project-wrapper{
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+      padding: 0 16px;
+    }
+
+    /* --- CAROUSEL (auto + manual) --- */
+    .carousel{
+      position: relative;
+      width: 100%;
+      max-width: 980px;
+      margin: 2rem auto 1rem;
+      overflow: hidden;
+      border-radius: 1rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      background: #fff;
+    }
+
+    /* fits screen nicely (taller than before) */
+    .carousel__viewport{
+      width: 100%;
+      height: clamp(320px, 70vh, 680px);
+    }
+
+    .slides{
+      display: flex;
+      height: 100%;
+      transition: transform 450ms ease;
+      will-change: transform;
+    }
+
+    .slide{
+      flex: 0 0 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    /* click-to-open wrapper */
+    .slide a{
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* FILL the whole slide (no letterboxing) */
+    .slide img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;     /* key change */
+      object-position: center;
+      display: block;
+    }
+
+    /* Optional subtle "click to view" hint */
+    .slide::after{
+      content: "Click to view full image ↗";
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.55);
+      color: #fff;
+      font-size: 0.85rem;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: 180ms ease;
+    }
+    .carousel:hover .slide::after{ opacity: 1; transform: translateY(0); }
+
+    .carousel__btn{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 46px;
+      height: 46px;
+      border: none;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.55);
+      color: #fff;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      z-index: 3;
+    }
+    .carousel__btn:hover{ background: rgba(0,0,0,0.75); }
+    .carousel__btn:active{ transform: translateY(-50%) scale(0.98); }
+    .carousel__btn.prev{ left: 12px; }
+    .carousel__btn.next{ right: 12px; }
+
+    .carousel__dots{
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      padding: 12px 0 14px;
+      background: #fff;
+    }
+    .dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      border: none;
+      background: rgba(0,0,0,0.2);
+      cursor: pointer;
+    }
+    .dot.active{ background: rgba(0,0,0,0.7); }
+
+    .project-actions{
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 10px 0 28px;
+    }
+
+    .project-details{
+      text-align: left;
+      margin-top: 1.5rem;
+    }
+    .project-details ul{ margin-left: 1.2rem; }
+
+    /* If you don’t have a .button style in styles.css, uncomment this
+    .button{
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      background: #111;
+      color: #fff;
+      font-weight: 600;
+    }
+    .button.secondary{ background:#eee; color:#111; }
+    */
+
+    /* Centered checklist with ticks */
+.project-card__list{
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+.project-card__list li{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  margin-bottom: 0.6rem;
+  text-align: center;
+}
+.project-card__list li::before{
+  content: "✓";
+  color: var(--first-color);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+  </style>
+</head>
+<header class="l-header">
+  <nav class="nav bd-grid">
+    <div>
+      <a href="index.html#home" class="nav__logo">Trixy</a>
+    </div>
+
+    <div class="nav__menu" id="nav-menu">
+      <ul class="nav__list">
+        <li class="nav__item"><a href="index.html#home" class="nav__link">Home</a></li>
+        <li class="nav__item"><a href="index.html#about" class="nav__link">About</a></li>
+        <li class="nav__item"><a href="index.html#skills" class="nav__link">Skills</a></li>
+
+        <li class="nav__item nav__dropdown">
+          <a href="index.html#projects" class="nav__link">Projects ▾</a>
+          <ul class="nav__dropdown-menu">
+            <li><a href="index.html#project1" class="nav__dropdown-link">EatWell</a></li>
+            <li><a href="index.html#project2" class="nav__dropdown-link">Velvet Oasis Hotel</a></li>
+            <li><a href="index.html#project3" class="nav__dropdown-link">Pawpals Website</a></li>
+          </ul>
+        </li>
+
+        <li class="nav__item"><a href="index.html#work" class="nav__link">Experience</a></li>
+        <li class="nav__item"><a href="index.html#contact" class="nav__link">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="nav__toggle" id="nav-toggle">
+      <i class="bx bx-menu"></i>
+    </div>
+  </nav>
+</header>
+
+<body>
+<section class="section">
+  <div class="project-wrapper">
+
+    <h2 class="section-title">Web Development Portfolio Website</h2>
+
+    <p class="about__text">
+      This project involved designing and developing a multi-page website to demonstrate
+      foundational web development skills and best practices.
+    </p>
+
+    <!-- IMAGE CAROUSEL (auto + manual + clickable images) -->
+    <div class="carousel" id="carousel" aria-label="Project images carousel">
+      <button class="carousel__btn prev" type="button" aria-label="Previous image">&#10094;</button>
+
+      <div class="carousel__viewport">
+        <div class="slides" id="slides">
+          <div class="slide">
+            <a href="assets/img/pawpals.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open full image: Homepage">
+              <img src="assets/img/pawpals.jpg" alt="Homepage">
+            </a>
+          </div>
+          <div class="slide">
+            <a href="assets/img/pawpals2.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open full image: Testimonials section">
+              <img src="assets/img/pawpals2.jpg" alt="Testimonials section">
+            </a>
+          </div>
+          <div class="slide">
+            <a href="assets/img/Dogservices.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open full image: Services section">
+              <img src="assets/img/Dogservices.jpg" alt="Services section">
+            </a>
+          </div>
+          <div class="slide">
+            <a href="assets/img/dogBooking.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open full image: Booking page">
+              <img src="assets/img/dogBooking.jpg" alt="Booking page">
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <button class="carousel__btn next" type="button" aria-label="Next image">&#10095;</button>
+
+      <div class="carousel__dots" id="dots" aria-label="Carousel navigation dots"></div>
+    </div>
+
+    <!-- Buttons under carousel -->
+    <div class="project-actions">
+      <!-- Replace href with your real PawPals URL (deployed site / GitHub Pages / Netlify etc.) -->
+      <a class="button" href="assets/vides/PAWPALS VID .mp4" target="_blank" rel="noopener noreferrer">
+  Watch Video Demo ↗
+</a>
+
+
+      <a href="index.html#projects" class="button secondary">
+        ← Back to Portfolio
+      </a>
+    </div>
+
+   <div class="project-summary">
+  <div class="project-card">
+    <div class="project-card__label">Role</div>
+    <div class="project-card__value">Front-end Developer</div>
+  </div>
+
+  <div class="project-card">
+    <div class="project-card__label">Tools</div>
+    <div class="project-card__value">HTML · CSS · JavaScript</div>
+  </div>
+
+  <div class="project-card project-card--wide">
+    <div class="project-card__label">Key Features</div>
+    <ul class="project-card__list">
+      <li>Multi-page site with consistent navigation</li>
+      <li>Form submission with response page</li>
+      <li>Tables and multimedia integration</li>
+      <li>Responsive layout using CSS</li>
+      <li>JavaScript interactivity for better UX</li>
+    </ul>
+  </div>
+
+  <div class="project-card project-card--wide">
+    <div class="project-card__label">Outcome</div>
+    <p class="project-card__text">
+      Built a strong foundation in semantic HTML, responsive styling, and front-end interactivity.
+      This project demonstrates clean structuring, consistency across pages, and user-focused design.
+    </p>
+  </div>
+</div>
+
+
+
+  </div>
+</section>
+
+<script>
+  const carousel = document.getElementById("carousel");
+  const slidesEl = document.getElementById("slides");
+  const total = slidesEl.children.length;
+
+  const prevBtn = document.querySelector(".carousel__btn.prev");
+  const nextBtn = document.querySelector(".carousel__btn.next");
+  const dotsEl = document.getElementById("dots");
+
+  let index = 0;
+
+  // autoplay settings
+  const AUTOPLAY_MS = 3500;
+  let timer = null;
+
+  // build dots
+  const dots = [];
+  for (let i = 0; i < total; i++) {
+    const b = document.createElement("button");
+    b.className = "dot" + (i === 0 ? " active" : "");
+    b.type = "button";
+    b.setAttribute("aria-label", "Go to image " + (i + 1));
+    b.addEventListener("click", () => {
+      goTo(i);
+      restartAutoplay();
+    });
+    dotsEl.appendChild(b);
+    dots.push(b);
+  }
+
+  function update() {
+    slidesEl.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle("active", i === index));
+  }
+
+  function goTo(i) {
+    index = (i + total) % total;
+    update();
+  }
+
+  function next() { goTo(index + 1); }
+  function prev() { goTo(index - 1); }
+
+  prevBtn.addEventListener("click", () => { prev(); restartAutoplay(); });
+  nextBtn.addEventListener("click", () => { next(); restartAutoplay(); });
+
+  // keyboard support
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") { prev(); restartAutoplay(); }
+    if (e.key === "ArrowRight") { next(); restartAutoplay(); }
+  });
+
+  // autoplay controls
+  function startAutoplay() {
+    stopAutoplay();
+    timer = setInterval(next, AUTOPLAY_MS);
+  }
+  function stopAutoplay() {
+    if (timer) clearInterval(timer);
+    timer = null;
+  }
+  function restartAutoplay() {
+    startAutoplay();
+  }
+
+  // pause autoplay on hover/focus (so user can interact)
+  carousel.addEventListener("mouseenter", stopAutoplay);
+  carousel.addEventListener("mouseleave", startAutoplay);
+  carousel.addEventListener("focusin", stopAutoplay);
+  carousel.addEventListener("focusout", startAutoplay);
+
+  // start
+  update();
+  startAutoplay();
+</script>
+</body>
+</html>
+```

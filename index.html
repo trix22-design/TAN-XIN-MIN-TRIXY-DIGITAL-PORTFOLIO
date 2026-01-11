@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <!-- =====BOX ICONS===== -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <title>TAN XIN MIN TRIXY | Digital Portfolio</title>
+
+    <!-- ✅ Latest edits (About text spacing + bigger project images) -->
+    <style>
+      /* ===== ABOUT: fix crammed text ===== */
+      #about .about__container{
+        align-items: center;
+        column-gap: 2.5rem;
+      }
+
+      #about .about__subtitle{
+        font-size: 1.9rem;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+      }
+
+      #about .about__text{
+        max-width: 58ch;          /* prevents long lines */
+        line-height: 1.85;        /* more breathing space */
+        font-size: 1.05rem;       /* slightly bigger */
+      }
+
+      #about .about__text + .about__text{
+        margin-top: 1rem;
+      }
+
+      /* Make About image bigger + look nicer */
+      #about .about__img img{
+        width: 100%;
+        max-width: 520px;
+        height: 520px;
+        object-fit: cover;
+        border-radius: 0.75rem;
+        box-shadow: 0px 10px 28px rgba(14, 36, 49, 0.15);
+      }
+
+      /* ===== PROJECTS: bigger images + nicer layout ===== */
+      #projects .about__container{
+        grid-template-columns: 1.2fr 1fr;
+        align-items: center;
+        column-gap: 2rem;
+      }
+
+      #projects .about__img img{
+        width: 100%;
+        max-width: 560px;
+        height: 320px;
+        object-fit: cover;
+        border-radius: 0.75rem;
+        box-shadow: 0px 10px 28px rgba(14, 36, 49, 0.15);
+      }
+
+      #projects .about__subtitle{
+        font-size: 1.35rem;
+        line-height: 1.35;
+        margin-bottom: 0.75rem;
+      }
+
+      #projects .about__text{
+        max-width: 56ch;
+        line-height: 1.75;
+        margin-bottom: 1rem;
+        font-size: 1.02rem;
+      }
+
+      /* ===== Responsive fixes ===== */
+      @media screen and (max-width: 768px){
+        #about .about__container{
+          grid-template-columns: 1fr;
+          text-align: left;
+        }
+
+        #about .about__img img{
+          max-width: 100%;
+          height: auto;
+        }
+
+        #projects .about__container{
+          grid-template-columns: 1fr;
+          row-gap: 1.25rem;
+          text-align: left;
+        }
+
+        #projects .about__img img{
+          max-width: 100%;
+          height: auto;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!--===== HEADER =====-->
+    <header class="l-header">
+      <nav class="nav bd-grid">
+        <div>
+          <a href="#home" class="nav__logo">Tan Xin Min Trixy</a>
+        </div>
+
+        <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="#home" class="nav__link active-link">Home</a>
+            </li>
+            <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+            <li class="nav__item">
+              <a href="#skills" class="nav__link">Skills</a>
+            </li>
+            <li class="nav__item nav__dropdown">
+              <a href="#projects" class="nav__link">
+                Projects <i class="bx bx-chevron-down"></i>
+              </a>
+
+              <ul class="nav__dropdown-menu">
+                <li><a href="#project1" class="nav__dropdown-link">EatWell</a></li>
+                <li><a href="#project2" class="nav__dropdown-link">Velvet Oasis Hotel</a></li>
+                <li><a href="#project3" class="nav__dropdown-link">Pawpals Website</a></li>
+              </ul>
+            </li>
+
+            <li class="nav__item">
+              <a href="#work" class="nav__link">Experience</a>
+            </li>
+            <li class="nav__item">
+              <a href="#contact" class="nav__link">Contact</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="nav__toggle" id="nav-toggle">
+          <i class="bx bx-menu"></i>
+        </div>
+      </nav>
+    </header>
+
+    <main class="l-main">
+      <!--===== HOME =====-->
+      <section class="home bd-grid" id="home">
+        <div class="home__data">
+          <h1 class="home__title">
+            Hi,<br />I’m
+            <span class="home__title-color">Trixy Tan</span><br />
+            Business & Financial Technology Graduate
+          </h1>
+
+          <p class="about__text" style="margin-top: 12px;">
+            Aspiring FinTech Operations & Technical Support professional with exposure to
+            payment workflows, customer support, and system checks through an industry attachment.
+          </p>
+
+          <a href="#contact" class="button">Contact</a>
+        </div>
+
+        <div class="home__social">
+          <a
+            href="https://www.linkedin.com/in/trixy-tan-2bb504351/"
+            class="home__social-icon"
+            target="_blank"
+            rel="noreferrer"
+            ><i class="bx bxl-linkedin"></i
+          ></a>
+
+        </div>
+
+        <div class="home__img">
+  <svg
+    class="home__blob"
+    viewBox="0 0 479 467"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+  >
+    <mask id="mask0" mask-type="alpha">
+      <path
+        d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"
+      />
+    </mask>
+
+    <g mask="url(#mask0)">
+      <path
+        d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"
+      />
+
+      <!-- ✅ FIXED IMAGE -->
+      <image
+        class="home__blob-img"
+        href="assets/img/Gemini_Generated_Image_mxin4omxin4omxin.png"
+        x="0"
+        y="0"
+        width="479"
+        height="467"
+        preserveAspectRatio="xMidYMid slice"
+      />
+    </g>
+  </svg>
+</div>
+
+      </section>
+
+      <!--===== ABOUT =====-->
+      <section class="about section" id="about">
+        <h2 class="section-title">About</h2>
+
+        <div class="about__container bd-grid">
+          <div class="about__img">
+            <img src="assets/img/prof photo full.png" alt="About photo" />
+          </div>
+
+          <div>
+            <h2 class="about__subtitle">I’m Trixy</h2>
+
+            <!-- ✅ Less cramped, more professional -->
+            <p class="about__text">
+              I am a recent graduate with a Diploma in Business and Financial Technology from
+              Nanyang Polytechnic, seeking an entry-level role in FinTech operations and technical support.
+              I am especially interested in supporting digital payment systems and working with merchants
+              to ensure smooth, reliable day-to-day operations.
+            </p>
+
+            <p class="about__text">
+              <strong>Reflection:</strong> Through my industry attachment and academic projects, I strengthened my
+              understanding of payment workflows and operational support. I learned to stay calm under time pressure,
+              communicate clearly with stakeholders, and maintain strong attention to detail when handling system checks
+              and case tracking.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!--===== SKILLS =====-->
+<section class="skills section" id="skills">
+  <h2 class="section-title">My Skills</h2>
+
+  <div class="skills__container bd-grid">
+    <div>
+      <h2 class="skills__subtitle">Technical Skills</h2>
+      <p class="skills__text">
+        My strengths combine customer-facing support with a technical foundation in web systems,
+        data reporting, and basic database knowledge.
+      </p>
+
+      <!-- ✅ NEW: 2-column layout wrapper -->
+      <div class="skills__grid">
+
+        <div class="skills__data">
+          <div class="skills__names">
+            <i class="bx bxs-spreadsheet skills__icon"></i>
+            <span class="skills__name">Microsoft Excel (Tracking & Reporting)</span>
+          </div>
+          <div class="skills__bar skills__html"></div>
+          <div><span class="skills__percentage">85%</span></div>
+        </div>
+
+        <div class="skills__data">
+          <div class="skills__names">
+            <i class="bx bxl-html5 skills__icon"></i>
+            <span class="skills__name">HTML / CSS</span>
+          </div>
+          <div class="skills__bar skills__css"></div>
+          <div><span class="skills__percentage">80%</span></div>
+        </div>
+
+        <div class="skills__data">
+          <div class="skills__names">
+            <i class="bx bxl-javascript skills__icon"></i>
+            <span class="skills__name">JavaScript</span>
+          </div>
+          <div class="skills__bar skills__js"></div>
+          <div><span class="skills__percentage">65%</span></div>
+        </div>
+
+        <div class="skills__data">
+          <div class="skills__names">
+            <i class="bx bxl-python skills__icon"></i>
+            <span class="skills__name">Python</span>
+          </div>
+          <div class="skills__bar skills__python"></div>
+          <div><span class="skills__percentage">70%</span></div>
+        </div>
+
+        <div class="skills__data">
+          <div class="skills__names">
+            <i class="bx bxs-data skills__icon"></i>
+            <span class="skills__name">MySQL Workbench</span>
+          </div>
+          <div class="skills__bar skills__mysql"></div>
+          <div><span class="skills__percentage">65%</span></div>
+        </div>
+
+        <div class="skills__data">
+          <div class="skills__names">
+            <i class="bx bxs-bar-chart-alt-2 skills__icon"></i>
+            <span class="skills__name">Tableau (Dashboards)</span>
+          </div>
+          <div class="skills__bar skills__tableau"></div>
+          <div><span class="skills__percentage">65%</span></div>
+        </div>
+
+      </div>
+
+      <!-- Soft skills stays below (your existing soft skills UI can remain) -->
+      <!-- keep your soft-skills block here -->
+       <!-- ✅ Soft Skills (added back) -->
+<div class="skills__soft">
+  <div class="skills__soft-title">Soft Skills</div>
+
+  <div class="skills__chips">
+    <span class="skills__chip">Customer Support</span>
+    <span class="skills__chip">Communication</span>
+    <span class="skills__chip">Problem Solving</span>
+    <span class="skills__chip">Attention to Detail</span>
+    <span class="skills__chip">Teamwork</span>
+    <span class="skills__chip">Time Management</span>
+  </div>
+</div>
+
+    </div>
+  </div>
+</section>
+
+
+
+      <!--===== PROJECTS =====-->
+      <section class="work section projects-wide" id="projects">
+        <h2 class="section-title">Projects</h2>
+
+        <div class="about__container bd-grid" id="project1">
+          <div>
+            <h3 class="about__subtitle">EatWell (Flask Web App)</h3>
+            <p class="about__text">
+              Built a sustainable meal-planning and shopping website with cart, checkout, and order confirmation flow.
+            </p>
+
+            <a href="project-eatwell.html" class="button">Learn more</a>
+          </div>
+
+          <div class="about__img">
+            <img src="assets/img/shopping cart.jpg" alt="Project 1 image" />
+          </div>
+        </div>
+
+        <div class="about__container bd-grid" id="project2" style="margin-top: 40px;">
+          <div>
+            <h3 class="about__subtitle">Velvet Oasis Hotel (UX Prototype in Figma)</h3>
+            <p class="about__text">
+              Designed a 3-page interactive hotel website prototype in Figma, focusing on clear navigation,
+              intuitive user flows, and a consistent, UX-driven layout.
+            </p>
+
+            <a href="project-ux.html" class="button">Learn more</a>
+          </div>
+
+          <div class="about__img">
+            <img src="assets/img/Facilities booking .jpg" alt="Project 2 image" />
+          </div>
+        </div>
+
+        <div class="about__container bd-grid" id="project3" style="margin-top: 40px;">
+          <div>
+            <h3 class="about__subtitle">Pawpals – Web Development Multi-Page Website (HTML/CSS/JS)</h3>
+            <p class="about__text">
+              Developed a responsive 3+ page website including navigation, table, form + response page, and JavaScript interactivity.
+            </p>
+
+            <a href="project-webdev.html" class="button">Learn more</a>
+          </div>
+
+          <div class="about__img">
+            <img src="assets/img/pawpals.jpg" alt="Project 3 image" />
+          </div>
+        </div>
+      </section>
+
+    <!--===== EXPERIENCE / WORK =====-->
+<section class="work section" id="work">
+  <h2 class="section-title">Experience</h2>
+
+  <div class="experience-wide">
+
+    <!-- Row 1 -->
+    <div class="experience-row">
+      <figure class="experience__img-card">
+        <img src="assets/img/ocbc.jpg" alt="OCBC Banking Operations & Payments Support" />
+        <figcaption class="experience__caption">OCBC – Payments Support</figcaption>
+      </figure>
+
+      <div class="experience__block">
+        <h3 class="about__subtitle">
+          Industry Attachment – Banking Operations & Payments Support, OCBC Bank
+        </h3>
+        <p class="about__text">
+          Supported payment operations and customer enquiries by tracking cases in Excel, assisting with system checks,
+          and coordinating issue resolution, contributing to smoother daily operations and timely service support.
+        </p>
+      </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="experience-row">
+      <figure class="experience__img-card">
+        <img src="assets/img/Payease.png" alt="Final Year Project – Digital Payments System" />
+        <figcaption class="experience__caption">Final Year Project – Digital Payments System</figcaption>
+      </figure>
+
+      <div class="experience__block">
+        <h3 class="about__subtitle">
+          Final Year Project – Digital Payments & Merchant Support System, Nanyang Polytechnic
+        </h3>
+        <p class="about__text">
+          Designed and implemented a web-based payment support system using Python, HTML/CSS, and Excel-based reporting
+          to simulate merchant onboarding, transaction tracking, and issue handling, strengthening understanding of
+          payment workflows and operational support.
+        </p>
+      </div>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="experience-row">
+      <figure class="experience__img-card">
+        <img src="assets/img/Asics-logotipo.jpg" alt="ASICS Retail Associate Experience" />
+        <figcaption class="experience__caption">ASICS – Retail Associate</figcaption>
+      </figure>
+
+      <div class="experience__block">
+        <h3 class="about__subtitle">Retail Associate (Part-Time), ASICS</h3>
+        <p class="about__text">
+          Assisted customers with product selection and fitting, handled cashiering and inventory restocking,
+          and supported daily store operations to deliver a positive customer experience and maintain accurate
+          stock management.
+        </p>
+      </div>
+    </div>
+
+    <div class="experience__actions">
+      <a href="assets/Trixy Tan Xin Min Resume.pdf" class="button" target="_blank" rel="noreferrer">
+        Download Resume (PDF)
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+
+      <!--===== CONTACT =====-->
+      <section class="contact section" id="contact">
+        <h2 class="section-title">Contact</h2>
+
+        <div class="contact__container bd-grid">
+          <div class="about__text">
+            <p><strong>Email:</strong> trixy.tt@gmail.com</p>
+            <p><strong>Mobile:</strong> +65 9008 4582</p>
+            <p>
+              <strong>LinkedIn:</strong>
+              <a href="https://www.linkedin.com/in/trixy-tan-2bb504351" target="_blank" rel="noreferrer">
+                linkedin.com/in/trixy-tan-2bb504351
+              </a>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!--===== FOOTER =====-->
+    <footer class="footer">
+      <p class="footer__title">Tan Xin Min Trixy</p>
+      <div class="footer__social">
+        <a
+          href="https://www.linkedin.com/in/trixy-tan-2bb504351/"
+          class="footer__icon"
+          target="_blank"
+          rel="noreferrer"
+          ><i class="bx bxl-linkedin"></i
+        ></a>
+      </div>
+      <p class="footer__copy">&#169; 2026. All rights reserved.</p>
+    </footer>
+
+    <!--===== SCROLL REVEAL =====-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!--===== MAIN JS =====-->
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
+
