@@ -6,7 +6,6 @@
 
     <link rel="stylesheet" href="assets/css/styles.css" />
 
-    <!-- =====BOX ICONS===== -->
     <link
       href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css"
       rel="stylesheet"
@@ -14,9 +13,8 @@
 
     <title>TAN XIN MIN TRIXY | Digital Portfolio</title>
 
-    <!-- ✅ Latest edits (About text spacing + bigger project images) -->
     <style>
-      /* ===== ABOUT: fix crammed text ===== */
+     
       #about .about__container{
         align-items: center;
         column-gap: 2.5rem;
@@ -29,16 +27,16 @@
       }
 
       #about .about__text{
-        max-width: 58ch;          /* prevents long lines */
-        line-height: 1.85;        /* more breathing space */
-        font-size: 1.05rem;       /* slightly bigger */
+        max-width: 58ch;          
+        line-height: 1.85;       
+        font-size: 1.05rem;       
       }
 
       #about .about__text + .about__text{
         margin-top: 1rem;
       }
 
-      /* Make About image bigger + look nicer */
+     
       #about .about__img img{
         width: 100%;
         max-width: 520px;
@@ -48,7 +46,6 @@
         box-shadow: 0px 10px 28px rgba(14, 36, 49, 0.15);
       }
 
-      /* ===== PROJECTS: bigger images + nicer layout ===== */
       #projects .about__container{
         grid-template-columns: 1.2fr 1fr;
         align-items: center;
@@ -77,7 +74,7 @@
         font-size: 1.02rem;
       }
 
-      /* ===== Responsive fixes ===== */
+     
       @media screen and (max-width: 768px){
         #about .about__container{
           grid-template-columns: 1fr;
@@ -104,7 +101,7 @@
   </head>
 
   <body>
-    <!--===== HEADER =====-->
+  
     <header class="l-header">
       <nav class="nav bd-grid">
         <div>
@@ -148,7 +145,7 @@
     </header>
 
     <main class="l-main">
-      <!--===== HOME =====-->
+   
       <section class="home bd-grid" id="home">
         <div class="home__data">
           <h1 class="home__title">
@@ -195,7 +192,7 @@
         d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"
       />
 
-      <!-- ✅ FIXED IMAGE -->
+      
       <image
         class="home__blob-img"
         href="assets/img/Gemini_Generated_Image_mxin4omxin4omxin.png"
@@ -211,7 +208,7 @@
 
       </section>
 
-      <!--===== ABOUT =====-->
+      
       <section class="about section" id="about">
         <h2 class="section-title">About</h2>
 
@@ -223,7 +220,7 @@
           <div>
             <h2 class="about__subtitle">I’m Trixy</h2>
 
-            <!-- ✅ Less cramped, more professional -->
+         
             <p class="about__text">
               I am a recent graduate with a Diploma in Business and Financial Technology from
               Nanyang Polytechnic, seeking an entry-level role in FinTech operations and technical support.
@@ -241,7 +238,7 @@
         </div>
       </section>
 
-      <!--===== SKILLS =====-->
+     
 <section class="skills section" id="skills">
   <h2 class="section-title">My Skills</h2>
 
@@ -253,7 +250,7 @@
         data reporting, and basic database knowledge.
       </p>
 
-      <!-- ✅ NEW: 2-column layout wrapper -->
+    
       <div class="skills__grid">
 
         <div class="skills__data">
@@ -315,9 +312,7 @@
 
       </div>
 
-      <!-- Soft skills stays below (your existing soft skills UI can remain) -->
-      <!-- keep your soft-skills block here -->
-       <!-- ✅ Soft Skills (added back) -->
+     
 <div class="skills__soft">
   <div class="skills__soft-title">Soft Skills</div>
 
@@ -337,7 +332,7 @@
 
 
 
-      <!--===== PROJECTS =====-->
+     
       <section class="work section projects-wide" id="projects">
         <h2 class="section-title">Projects</h2>
 
@@ -388,13 +383,13 @@
         </div>
       </section>
 
-    <!--===== EXPERIENCE / WORK =====-->
+   
 <section class="work section" id="work">
   <h2 class="section-title">Experience</h2>
 
   <div class="experience-wide">
 
-    <!-- Row 1 -->
+  
     <div class="experience-row">
       <figure class="experience__img-card">
         <img src="assets/img/OCBC.jpg" alt="OCBC Banking Operations & Payments Support" />
@@ -412,7 +407,7 @@
       </div>
     </div>
 
-    <!-- Row 2 -->
+   
     <div class="experience-row">
       <figure class="experience__img-card">
         <img src="assets/img/Payease.png" alt="Final Year Project – Digital Payments System" />
@@ -431,7 +426,7 @@
       </div>
     </div>
 
-    <!-- Row 3 -->
+   
     <div class="experience-row">
       <figure class="experience__img-card">
         <img src="assets/img/Asics-logotipo.jpg" alt="ASICS Retail Associate Experience" />
@@ -459,7 +454,7 @@
 
 
 
-      <!--===== CONTACT =====-->
+      
       <section class="contact section" id="contact">
         <h2 class="section-title">Contact</h2>
 
@@ -478,7 +473,7 @@
       </section>
     </main>
 
-    <!--===== FOOTER =====-->
+
     <footer class="footer">
       <p class="footer__title">Tan Xin Min Trixy</p>
       <div class="footer__social">
@@ -493,10 +488,10 @@
       <p class="footer__copy">&#169; 2026. All rights reserved.</p>
     </footer>
 
-    <!--===== SCROLL REVEAL =====-->
+   
     <script src="https://unpkg.com/scrollreveal"></script>
 
-    <!--===== MAIN JS =====-->
+   
     <script src="assets/js/main.js"></script>
   </body>
 </html>
